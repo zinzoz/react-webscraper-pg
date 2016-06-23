@@ -23,15 +23,15 @@ export default class Graph extends React.Component {
         );
     }
     componentDidMount() {
-        fetch('/getdatagraph').then((response) => {
-            return response.json();
-        }).then((data) => {
-            this.setState({
-                items: data.items
-            });
-        }).catch((err) => {
-            throw new Error(err);
-        });
+        // fetch('/getdatagraph').then((response) => {
+        //     return response.json();
+        // }).then((data) => {
+        //     this.setState({
+        //         items: data.items
+        //     });
+        // }).catch((err) => {
+        //     throw new Error(err);
+        // });
         $.getJSON(urls, function(data) {
           $('#container').highcharts('StockChart', {
               rangeSelector: {
@@ -49,6 +49,7 @@ export default class Graph extends React.Component {
               } ]
           });
       });
+
         setInterval(() => {
           $.getJSON(urls, function(data) {
             $('#container').highcharts('StockChart', {
@@ -70,4 +71,5 @@ export default class Graph extends React.Component {
       }, 10000);
 
     }
+
 }
